@@ -46,5 +46,12 @@ public class UserBO {
         
         udao.statusConect();
     }
+    
+    // BUSCAR USUÁRIO
+    public boolean getUser(String name) throws SQLException {
+        UsuarioDAO udao = new UsuarioDAO();
+        
+        return udao.getUser(name);
+    }
 
 }

@@ -1,9 +1,9 @@
 package DAO;
 
-import MODEL.ClientModel;
 import MODEL.UserModel;
-import VIEW.Login;
 import VIEW.TelaPrincipal;
+import VIEW.UserView;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,8 +42,8 @@ public class UsuarioDAO {
             ps = connection.prepareStatement(SQL);
             ps.setString(1, uM.getNome());
             ps.setString(2, uM.getPerfil());
-            ps.setString(4, uM.getLogin());
-            ps.setString(5, uM.getSenha());
+            ps.setString(3, uM.getLogin());
+            ps.setString(4, uM.getSenha());
 
             ps.execute();
             System.out.println("Cadastrado Com Sucesso!!!");
@@ -64,8 +64,9 @@ public class UsuarioDAO {
             ps = connection.prepareStatement(SQL);
             ps.setString(1, uM.getNome());
             ps.setString(2, uM.getPerfil());
-            ps.setString(4, uM.getLogin());
-            ps.setString(5, uM.getSenha());
+            ps.setString(3, uM.getLogin());
+            ps.setString(4, uM.getSenha());
+            ps.setInt(5, uM.getIdUser());
 
             ps.executeUpdate();
             System.out.println("Alterado Com Sucesso!!!");
@@ -96,7 +97,7 @@ public class UsuarioDAO {
         }
     }
 
-    // EFETUAR LOGIN USUÁRIO
+    //  FAZER LOGIN
     public boolean logarUser(String name, String password) throws SQLException {
         String sql = "SELECT * FROM TBUSUARIO WHERE LOGIN = ? AND SENHA = ?";
 
@@ -109,20 +110,52 @@ public class UsuarioDAO {
             if (rs.next()) {
                 TelaPrincipal principal = new TelaPrincipal();
                 // A linha abaixo obtem o conteudo do campo perfil da tabela tbusuario
-                String perfil = rs.getString(3); // Pega os dados na tabela na posição 6
+                String perfil = rs.getString(3); // Pega os dados na tabela na posição 3
 
                 // A estrutra a baixo faz o tratamento do perfil do usuário.
                 if (perfil.equals("Admin")) {
-                    //principal.btnNovoUser.setEnabled(true);
-                    //principal.lblUsuario.setForeground(Color.red);
+                    Color azulPadrao = new Color(23, 222, 253); // Azul padrão
+                    TelaPrincipal.menCadUser.setEnabled(true);
+                    TelaPrincipal.menuRelatorio.setEnabled(true);
+                    TelaPrincipal.lbl_user.setForeground(azulPadrao);
                 }
                 // A linha abaixo chama a tela principal
                 //principal.lblIdUser.setText(rs.getString(1));
-                //principal.lblUsuario.setText(rs.getString(2));
+                TelaPrincipal.lbl_user.setText(rs.getString(2));
                 principal.setVisible(true);
                 return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválido(s)");
+                return false;
+            }
+        } catch (Exception error) {
+            System.out.println("Erro ao logar: " + error.getMessage());
+            return false;
+        } finally {
+            connection.close();
+        }
+    }
+
+    // BUSCAR USUÁRIO
+    public boolean getUser(String name) throws SQLException {
+        String sql = "SELECT * FROM TBUSUARIO WHERE LOGIN LIKE ?";
+
+        try {
+            UserView uv = new UserView();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, name + "%");
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                UserView.txtIdCli.setText(rs.getString(1));     // id
+                uv.setTxtNomeUser(rs.getString(2));             // Nome usuário
+                uv.setTxtPerfilUser(rs.getString(3));           // perfil
+                uv.setTxtLoginUser(rs.getString(4));            // login
+                uv.setTxtSenhaUser(rs.getString(5));            // senha
+                JOptionPane.showMessageDialog(null, "Busca realizada com sucesso!!!");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário Não Encontrado....");
                 return false;
             }
         } catch (Exception error) {

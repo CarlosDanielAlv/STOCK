@@ -1,0 +1,390 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package VIEW;
+
+import CONTROLLER.UserController;
+import MODEL.UserModel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+/**
+ *
+ * @author Carlo
+ */
+public class UserView extends javax.swing.JInternalFrame {
+
+    UserController uc = new UserController();
+
+    /**
+     * Creates new form UserView
+     */
+    public UserView() {
+        initComponents();
+    }
+
+    // MÉTODO PARA VALIDAR CAMPOS EM BRANCO.
+    private boolean validaCampos() {
+        return this.txtLoginUser.getText().isEmpty() || this.txtNomeUser.getText().isEmpty() || this.txtPerfilUser.getSelectedItem().equals("") || this.txtSenhaUser.getText().isEmpty()
+                || this.txtRepSenhaUser.getText().isEmpty();
+    }
+
+    // MÉTODO PARA VALIDAR SENHAS.
+    private boolean validaSenhas() {
+        String senha1 = new String(this.txtSenhaUser.getPassword());
+        String senha2 = new String(this.txtRepSenhaUser.getPassword());
+
+        return senha1.equals(senha2);
+    }
+
+    // MÉTODO PARA VALIDAR CAMPO PESQUISA
+    public boolean validaPesquisa() {
+        return this.txtPesqCli.getText().isEmpty();
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtIdCli = new javax.swing.JTextField();
+        txtNomeUser = new javax.swing.JTextField();
+        txtPerfilUser = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtLoginUser = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        btnExcluirCli = new javax.swing.JButton();
+        btnSalvarCli = new javax.swing.JButton();
+        txtSenhaUser = new javax.swing.JPasswordField();
+        txtRepSenhaUser = new javax.swing.JPasswordField();
+        txtPesqCli = new javax.swing.JTextField();
+        btnPesqCli = new javax.swing.JButton();
+        btnLimparCli = new javax.swing.JButton();
+        txtTeste = new javax.swing.JTextField();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setTitle("Usuários");
+        setPreferredSize(new java.awt.Dimension(1270, 570));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(53, 99, 135));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Icon/password.png"))); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Detalhes do usuário");
+
+        txtIdCli.setBackground(new java.awt.Color(255, 255, 204));
+        txtIdCli.setForeground(new java.awt.Color(255, 0, 102));
+
+        txtPerfilUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "Admin", "Funcionario" }));
+
+        jLabel3.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Nome");
+
+        jLabel4.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Login");
+
+        jLabel5.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Perfil");
+
+        jLabel6.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Senha");
+
+        jLabel7.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Digite novamente sua senha");
+
+        btnExcluirCli.setBackground(new java.awt.Color(255, 102, 102));
+        btnExcluirCli.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnExcluirCli.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluirCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Icon/lixeira.png"))); // NOI18N
+        btnExcluirCli.setText("Excluir");
+
+        btnSalvarCli.setBackground(new java.awt.Color(0, 153, 153));
+        btnSalvarCli.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnSalvarCli.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalvarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Icon/bookmark.png"))); // NOI18N
+        btnSalvarCli.setText("Salvar");
+        btnSalvarCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarCliActionPerformed(evt);
+            }
+        });
+
+        txtPesqCli.setText("Faça uma pesquisa (Login)");
+
+        btnPesqCli.setBackground(new java.awt.Color(53, 99, 135));
+        btnPesqCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Icon/lupa-arredondada.png"))); // NOI18N
+        btnPesqCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesqCliActionPerformed(evt);
+            }
+        });
+
+        btnLimparCli.setBackground(new java.awt.Color(102, 204, 255));
+        btnLimparCli.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnLimparCli.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimparCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Icon/borracha.png"))); // NOI18N
+        btnLimparCli.setText("Limpar");
+        btnLimparCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparCliActionPerformed(evt);
+            }
+        });
+
+        txtTeste.setText("jTextField1");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addGap(758, 758, 758)
+                        .addComponent(txtIdCli, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(657, 657, 657)
+                        .addComponent(txtTeste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(140, 140, 140)
+                        .addComponent(txtPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(btnPesqCli))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel3)
+                        .addGap(345, 345, 345)
+                        .addComponent(jLabel4)
+                        .addGap(357, 357, 357)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(txtNomeUser, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtLoginUser, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(txtPerfilUser, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(txtSenhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel7))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(txtRepSenhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(btnSalvarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLimparCli, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnExcluirCli, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(txtIdCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTeste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnPesqCli))
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNomeUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLoginUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPerfilUser, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addGap(6, 6, 6)
+                .addComponent(txtSenhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addGap(6, 6, 6)
+                .addComponent(txtRepSenhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimparCli, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluirCli, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, 540));
+
+        setBounds(0, 0, 1265, 570);
+    }// </editor-fold>//GEN-END:initComponents
+
+    // BOTÃO (SALVAR)
+    private void btnSalvarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCliActionPerformed
+        // método salvar abaixo
+        sair: // Em caso de erro de sistema venha sair.
+        if (this.validaCampos()) { // Valida Campos Em Branco
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos obritórios!", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+        } else if (!this.validaSenhas()) { // Valida Senhas
+            JOptionPane.showMessageDialog(null, "As senhas devem ser iguais!!!", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+        } else { // Salva o usuário
+            try {
+                String senha = new String(this.txtSenhaUser.getPassword());
+                String idCli = UserView.txtIdCli.getText();
+                System.out.println(idCli);
+                // Tratamento de inserção
+                if (idCli.equals("")) {
+                    if (!uc.manterUsuario(0, this.txtNomeUser.getText(), this.txtPerfilUser.getSelectedItem().toString(), this.txtLoginUser.getText(), senha)) {
+                        JOptionPane.showMessageDialog(null, "Erro ao inserir um usuário no banco de dados, contate o suporte técnico", "MENSAGEM", JOptionPane.ERROR_MESSAGE);
+                        break sair; // Ir para o sair
+                    }
+                    JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!!!", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    if (!uc.manterUsuario(Integer.parseInt(idCli), this.txtNomeUser.getText(), this.txtPerfilUser.getSelectedItem().toString(), this.txtLoginUser.getText(), senha)) {
+                        JOptionPane.showMessageDialog(null, "Erro ao inserir um usuário no banco de dados, contate o suporte técnico", "MENSAGEM", JOptionPane.ERROR_MESSAGE);
+                        break sair; // Ir para o sair
+                    }
+                    JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!!!", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (Exception error) {
+                String idCli = UserView.txtIdCli.getText();
+                System.out.println(idCli);
+                System.out.println("Erro ao manter o cliente: " + error.getMessage());
+            }
+        }
+    }//GEN-LAST:event_btnSalvarCliActionPerformed
+
+    // BOTÃO (PESQUISAR)
+    private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
+        // tudo a baixo é referente a ação do botão pesquisar.
+        if (!this.validaPesquisa()) { // Se o campo estiver preenchido
+            try {
+                if (uc.getUser(this.txtPesqCli.getText())) { // Se a pesquisa for realizada.
+                    System.out.println("Deu bom");
+                }
+            } catch (Exception e) {
+                System.out.println("erro ao fazer a busca: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha o campo pesquisa para realizar uma busca.", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPesqCliActionPerformed
+
+    // BOTÃO (LIMPAR)
+    private void btnLimparCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCliActionPerformed
+        // TODO add your handling code here:
+        //APAGAR
+
+
+    }//GEN-LAST:event_btnLimparCliActionPerformed
+
+    // Geet and Seet
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">
+    public static int getTxtIdCli() {
+        return Integer.parseInt(txtIdCli.getText());
+    }
+
+    public static void setTxtIdCli(String txtIdCli) { // ID User
+        UserView.txtIdCli.setText(txtIdCli);
+    }
+
+    public String getTxtLoginUser() {
+        return txtLoginUser.getText();
+    }
+
+    public void setTxtLoginUser(String txtLoginUser) { // Login User
+        this.txtLoginUser.setText(txtLoginUser);
+    }
+
+    public String getTxtNomeUser() {
+        return txtNomeUser.getText();
+    }
+
+    public void setTxtNomeUser(String txtNomeUser) { // Nome User
+        this.txtNomeUser.setText(txtNomeUser);
+    }
+
+    public String getTxtPerfilUser() {
+        return txtPerfilUser.getSelectedItem().toString();
+    }
+
+    public void setTxtPerfilUser(String txtPerfilUser) { // Perfil user
+        this.txtPerfilUser.setSelectedItem(txtPerfilUser);
+    }
+
+    public String getTxtPesqCli() {
+        return txtPesqCli.getText();
+    }
+
+    public void setTxtPesqCli(String txtPesqCli) {
+        this.txtPesqCli.setText(txtPesqCli);
+    }
+
+    public String getTxtSenhaUser() {
+        String senha = new String(txtSenhaUser.getPassword());
+        return senha;
+    }
+
+    public void setTxtSenhaUser(String txtSenhaUser) {
+        this.txtSenhaUser.setText(txtSenhaUser);
+    }
+    // </editor-fold> 
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExcluirCli;
+    private javax.swing.JButton btnLimparCli;
+    private javax.swing.JButton btnPesqCli;
+    private javax.swing.JButton btnSalvarCli;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    public static javax.swing.JTextField txtIdCli;
+    private javax.swing.JTextField txtLoginUser;
+    private javax.swing.JTextField txtNomeUser;
+    private javax.swing.JComboBox<String> txtPerfilUser;
+    private javax.swing.JTextField txtPesqCli;
+    private javax.swing.JPasswordField txtRepSenhaUser;
+    private javax.swing.JPasswordField txtSenhaUser;
+    public static javax.swing.JTextField txtTeste;
+    // End of variables declaration//GEN-END:variables
+}

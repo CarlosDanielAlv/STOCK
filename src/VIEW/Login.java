@@ -56,7 +56,7 @@ public class Login extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         txtLogin.setFont(new java.awt.Font("Source Sans Pro Light", 0, 18)); // NOI18N
-        txtLogin.setText("Login");
+        txtLogin.setText("admin");
         txtLogin.setToolTipText("");
         txtLogin.setBorder(null);
         txtLogin.setName(""); // NOI18N
@@ -79,7 +79,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setText("My Account");
 
         txtSenha.setFont(new java.awt.Font("Source Code Pro", 0, 14)); // NOI18N
-        txtSenha.setText("Password");
+        txtSenha.setText("admin");
         txtSenha.setBorder(null);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
