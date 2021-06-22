@@ -137,32 +137,29 @@ public class UsuarioDAO {
     }
 
     // BUSCAR USUÁRIO
-    public boolean getUser(String name) throws SQLException {
+    public UserModel getUser(String name) throws SQLException {
         String sql = "SELECT * FROM TBUSUARIO WHERE LOGIN LIKE ?";
-
+        UserModel uM = new UserModel();
         try {
-            UserView uv = new UserView();
             ps = connection.prepareStatement(sql);
             ps.setString(1, name + "%");
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                UserView.txtIdCli.setText(rs.getString(1));     // id
-                uv.setTxtNomeUser(rs.getString(2));             // Nome usuário
-                uv.setTxtPerfilUser(rs.getString(3));           // perfil
-                uv.setTxtLoginUser(rs.getString(4));            // login
-                uv.setTxtSenhaUser(rs.getString(5));            // senha
+                UserView.txtIdCli.setText(rs.getString(1)); // ID
+                uM.setNome(rs.getString(2)); // NOME
+                uM.setPerfil(rs.getString(3)); // PERFIL
+                uM.setLogin(rs.getString(4)); // LOGIN
+                uM.setSenha(rs.getString(5)); // SENHA
                 JOptionPane.showMessageDialog(null, "Busca realizada com sucesso!!!");
-                return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário Não Encontrado....");
-                return false;
             }
         } catch (Exception error) {
-            System.out.println("Erro ao logar: " + error.getMessage());
-            return false;
+            System.out.println("Erro ao getUser: " + error.getMessage());
         } finally {
             connection.close();
         }
+        return uM;
     }
 }
