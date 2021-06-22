@@ -34,7 +34,7 @@ public class UserController {
         }
     }
 
-    // ADICIONAR NOVO USUÁRIO
+    // ADICIONAR NOVO USUÁRIO / EDITAR
     public boolean manterUsuario(int idUser, String nome, String perfil, String login, String senha) throws SQLException {
 
         try {

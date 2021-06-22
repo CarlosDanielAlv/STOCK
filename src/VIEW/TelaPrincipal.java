@@ -192,7 +192,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // BOTÃO SOBRE
     private void MenAjuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenAjuSobreActionPerformed
-        // TODO add your handling code here:
+        // O código abaixo chama a tela sobre
         Sobre TelaSobre = new Sobre();
         TelaSobre.setVisible(true);
     }//GEN-LAST:event_MenAjuSobreActionPerformed
@@ -201,7 +201,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void menCadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menCadUserActionPerformed
         // abre form usuário na tela principal
         UserView userView = new UserView();
-        //UserView.txtIdCli.setVisible(false); // Oculta o txtid cli
+        UserView.txtIdCli.setVisible(false); // Oculta o txtid cli
         userView.setVisible(true); // torna visível o form user
         Desktop_Principal.add(userView); // adiciona o form dentro da tela principal
     }//GEN-LAST:event_menCadUserActionPerformed

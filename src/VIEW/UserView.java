@@ -6,14 +6,8 @@
 package VIEW;
 
 import CONTROLLER.UserController;
-import DAO.UsuarioDAO;
 import MODEL.UserModel;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -33,7 +27,7 @@ public class UserView extends javax.swing.JInternalFrame {
 
     // MÉTODO PARA VALIDAR CAMPOS EM BRANCO.
     private boolean validaCampos() {
-        return this.txtLoginUser.getText().isEmpty() || this.txtNomeUser.getText().isEmpty() || this.txtPerfilUser.getSelectedItem().equals("") || this.txtSenhaUser.getText().isEmpty()
+        return this.txtLoginUser.getText().isEmpty() || this.txtNomeUser.getText().isEmpty() || this.txtPerfilUser.getSelectedItem() == null || this.txtPerfilUser.getSelectedIndex() == 0 || this.txtSenhaUser.getText().isEmpty()
                 || this.txtRepSenhaUser.getText().isEmpty();
     }
 
@@ -48,6 +42,16 @@ public class UserView extends javax.swing.JInternalFrame {
     // MÉTODO PARA VALIDAR CAMPO PESQUISA
     public boolean validaPesquisa() {
         return this.txtPesqCli.getText().isEmpty();
+    }
+
+    // MÉTODO PARA LIMPAR TODOS OS CAMPOS
+    public void limpaCampos() {
+        this.txtLoginUser.setText(null);
+        this.txtNomeUser.setText(null);
+        this.txtPerfilUser.setSelectedItem(null);
+        this.txtRepSenhaUser.setText(null);
+        this.txtSenhaUser.setText(null);
+        UserView.txtIdCli.setText(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -73,7 +77,6 @@ public class UserView extends javax.swing.JInternalFrame {
         txtPesqCli = new javax.swing.JTextField();
         btnPesqCli = new javax.swing.JButton();
         btnLimparCli = new javax.swing.JButton();
-        txtTeste = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -137,7 +140,8 @@ public class UserView extends javax.swing.JInternalFrame {
             }
         });
 
-        txtPesqCli.setText("Faça uma pesquisa (Login)");
+        txtPesqCli.setText("Pesquisar....");
+        txtPesqCli.setToolTipText("Faça uma busca através do login de um usuário");
 
         btnPesqCli.setBackground(new java.awt.Color(53, 99, 135));
         btnPesqCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Icon/lupa-arredondada.png"))); // NOI18N
@@ -158,8 +162,6 @@ public class UserView extends javax.swing.JInternalFrame {
             }
         });
 
-        txtTeste.setText("jTextField1");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -174,9 +176,7 @@ public class UserView extends javax.swing.JInternalFrame {
                         .addGap(758, 758, 758)
                         .addComponent(txtIdCli, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(657, 657, 657)
-                        .addComponent(txtTeste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(140, 140, 140)
+                        .addGap(869, 869, 869)
                         .addComponent(txtPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(btnPesqCli))
@@ -229,9 +229,7 @@ public class UserView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTeste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnPesqCli))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,7 +273,6 @@ public class UserView extends javax.swing.JInternalFrame {
             try {
                 String senha = new String(this.txtSenhaUser.getPassword());
                 String idCli = UserView.txtIdCli.getText();
-                System.out.println(idCli);
                 // Tratamento de inserção
                 if (idCli.equals("")) {
                     if (!uc.manterUsuario(0, this.txtNomeUser.getText(), this.txtPerfilUser.getSelectedItem().toString(), this.txtLoginUser.getText(), senha)) {
@@ -285,10 +282,10 @@ public class UserView extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!!!", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     if (!uc.manterUsuario(Integer.parseInt(idCli), this.txtNomeUser.getText(), this.txtPerfilUser.getSelectedItem().toString(), this.txtLoginUser.getText(), senha)) {
-                        JOptionPane.showMessageDialog(null, "Erro ao inserir um usuário no banco de dados, contate o suporte técnico", "MENSAGEM", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Erro ao alterar um usuário no banco de dados, contate o suporte técnico", "MENSAGEM", JOptionPane.ERROR_MESSAGE);
                         break sair; // Ir para o sair
                     }
-                    JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!!!", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso!!!", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
                 }
             } catch (Exception error) {
                 String idCli = UserView.txtIdCli.getText();
@@ -302,18 +299,14 @@ public class UserView extends javax.swing.JInternalFrame {
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
         // tudo a baixo é referente a ação do botão pesquisar.
         UserModel um;
-        
+
         if (!this.validaPesquisa()) { // Se o campo estiver preenchido
             try {
                 um = uc.getUser(this.txtPesqCli.getText());
-                
-                //uc.getUser(this.txtPesqCli.getText()); // Se a pesquisa for realizada.
-                System.out.println(um.getNome());
                 this.txtNomeUser.setText(um.getNome());             // NOME
                 this.txtLoginUser.setText(um.getLogin());           // LOGIN
                 this.txtPerfilUser.setSelectedItem(um.getPerfil()); // PERFIL
                 this.txtSenhaUser.setText(um.getSenha());           // SENHA
-
             } catch (Exception e) {
                 System.out.println("erro ao fazer a busca: " + e.getMessage());
             }
@@ -324,16 +317,33 @@ public class UserView extends javax.swing.JInternalFrame {
 
     // BOTÃO (LIMPAR) - CLICK
     private void btnLimparCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCliActionPerformed
-        // TODO add your handling code here:
-        //APAGAR
-
-
+        // O código abaixo limpa todos os campos
+        int limpar = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja limpar os dados? ", "Atenção", JOptionPane.YES_NO_OPTION);
+        if (limpar == JOptionPane.YES_OPTION)
+            this.limpaCampos();
     }//GEN-LAST:event_btnLimparCliActionPerformed
-    
+
     // BOTÃO (EXCLUIR) - CLICK
     private void btnExcluirCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCliActionPerformed
-        // código abaixo realiza a exclusão de um usuário
-        
+        // Validação de campos
+        if (this.validaPesquisa()) {
+            JOptionPane.showMessageDialog(null, "Preencha o campo pesquisa para realizar uma busca.", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
+        } else if (UserView.txtIdCli.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Necessário realizar uma pesquisa, de um usuário válido", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // código abaixo realiza a exclusão de um usuário
+            try {
+                int excluir = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o usuário? não será possível recuperar o mesmo. ", "Atenção", JOptionPane.YES_NO_OPTION);
+                if (excluir == JOptionPane.YES_OPTION) {
+                    if (uc.DeleteUser(Integer.parseInt(UserView.txtIdCli.getText()))) {
+                        JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!!!", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("ERRO EXCLUIR: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Houve um problema na exclusão, entre em contato com desenvolvedor.", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_btnExcluirCliActionPerformed
 
     public void setTxtNomeUser(JTextField txtNomeUser) {
@@ -365,6 +375,5 @@ public class UserView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtPesqCli;
     private javax.swing.JPasswordField txtRepSenhaUser;
     private javax.swing.JPasswordField txtSenhaUser;
-    public static javax.swing.JTextField txtTeste;
     // End of variables declaration//GEN-END:variables
 }

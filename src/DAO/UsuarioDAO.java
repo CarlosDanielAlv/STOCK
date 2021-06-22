@@ -58,15 +58,15 @@ public class UsuarioDAO {
 
     // EDITAR USUÁRIO
     public boolean UpdateUser(UserModel uM) throws SQLException {
-        String SQL = "UPDATE TBUSUARIO SET NOME=?, PERFIL=?, LOGIN=?, SENHA=?, WHERE USUARIO_ID=?";
-
+        String SQL = "UPDATE TBUSUARIO SET NOME=?, PERFIL=?, LOGIN=?, SENHA=? WHERE USUARIO_ID=?";
         try {
             ps = connection.prepareStatement(SQL);
+            
             ps.setString(1, uM.getNome());
             ps.setString(2, uM.getPerfil());
             ps.setString(3, uM.getLogin());
             ps.setString(4, uM.getSenha());
-            ps.setInt(5, uM.getIdUser());
+            ps.setInt(5, Integer.parseInt(UserView.txtIdCli.getText()));
 
             ps.executeUpdate();
             System.out.println("Alterado Com Sucesso!!!");
