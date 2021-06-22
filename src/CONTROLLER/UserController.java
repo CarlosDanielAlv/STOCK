@@ -55,15 +55,26 @@ public class UserController {
     }
 
     // BUSCAR USUÁRIO
-    public boolean getUser(String nomeUser) {
-
+    public UserModel getUser(String nomeUser) throws SQLException {
         try {
-            ubo.getUser(nomeUser);
-            System.out.println("Passou no try controller");
-            return true;
+            return ubo.getUser(nomeUser);
         } catch (Exception e) {
             System.out.println("Erro ao pesquisar user> " + e.getMessage());
+        }
+        return ubo.getUser(nomeUser);
+    }
+
+    // DELETAR USER
+    public boolean DeleteUser(int idUser) {
+
+        try {
+            // Excluindo usuário
+            ubo.DeleteUser(idUser);
+            return true;
+        } catch (Exception e) {
+            System.out.println("ERRO ao excluir: " + e.getMessage());
             return false;
         }
     }
+
 }

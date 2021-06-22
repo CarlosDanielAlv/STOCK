@@ -6,7 +6,11 @@
 package VIEW;
 
 import CONTROLLER.UserController;
+import DAO.UsuarioDAO;
 import MODEL.UserModel;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -116,6 +120,11 @@ public class UserView extends javax.swing.JInternalFrame {
         btnExcluirCli.setForeground(new java.awt.Color(255, 255, 255));
         btnExcluirCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Icon/lixeira.png"))); // NOI18N
         btnExcluirCli.setText("Excluir");
+        btnExcluirCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirCliActionPerformed(evt);
+            }
+        });
 
         btnSalvarCli.setBackground(new java.awt.Color(0, 153, 153));
         btnSalvarCli.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -254,7 +263,7 @@ public class UserView extends javax.swing.JInternalFrame {
         setBounds(0, 0, 1265, 570);
     }// </editor-fold>//GEN-END:initComponents
 
-    // BOTÃO (SALVAR)
+    // BOTÃO (SALVAR) - CLICK
     private void btnSalvarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCliActionPerformed
         // método salvar abaixo
         sair: // Em caso de erro de sistema venha sair.
@@ -289,14 +298,22 @@ public class UserView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnSalvarCliActionPerformed
 
-    // BOTÃO (PESQUISAR)
+    // BOTÃO (PESQUISAR) - CLICK
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
         // tudo a baixo é referente a ação do botão pesquisar.
+        UserModel um;
+        
         if (!this.validaPesquisa()) { // Se o campo estiver preenchido
             try {
-                if (uc.getUser(this.txtPesqCli.getText())) { // Se a pesquisa for realizada.
-                    System.out.println("Deu bom");
-                }
+                um = uc.getUser(this.txtPesqCli.getText());
+                
+                //uc.getUser(this.txtPesqCli.getText()); // Se a pesquisa for realizada.
+                System.out.println(um.getNome());
+                this.txtNomeUser.setText(um.getNome());             // NOME
+                this.txtLoginUser.setText(um.getLogin());           // LOGIN
+                this.txtPerfilUser.setSelectedItem(um.getPerfil()); // PERFIL
+                this.txtSenhaUser.setText(um.getSenha());           // SENHA
+
             } catch (Exception e) {
                 System.out.println("erro ao fazer a busca: " + e.getMessage());
             }
@@ -305,65 +322,28 @@ public class UserView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnPesqCliActionPerformed
 
-    // BOTÃO (LIMPAR)
+    // BOTÃO (LIMPAR) - CLICK
     private void btnLimparCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCliActionPerformed
         // TODO add your handling code here:
         //APAGAR
 
 
     }//GEN-LAST:event_btnLimparCliActionPerformed
+    
+    // BOTÃO (EXCLUIR) - CLICK
+    private void btnExcluirCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCliActionPerformed
+        // código abaixo realiza a exclusão de um usuário
+        
+    }//GEN-LAST:event_btnExcluirCliActionPerformed
 
-    // Geet and Seet
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    public static int getTxtIdCli() {
-        return Integer.parseInt(txtIdCli.getText());
+    public void setTxtNomeUser(JTextField txtNomeUser) {
+        this.txtNomeUser = txtNomeUser;
     }
 
-    public static void setTxtIdCli(String txtIdCli) { // ID User
-        UserView.txtIdCli.setText(txtIdCli);
+    public JTextField getTxtNomeUser() {
+        return txtNomeUser;
     }
 
-    public String getTxtLoginUser() {
-        return txtLoginUser.getText();
-    }
-
-    public void setTxtLoginUser(String txtLoginUser) { // Login User
-        this.txtLoginUser.setText(txtLoginUser);
-    }
-
-    public String getTxtNomeUser() {
-        return txtNomeUser.getText();
-    }
-
-    public void setTxtNomeUser(String txtNomeUser) { // Nome User
-        this.txtNomeUser.setText(txtNomeUser);
-    }
-
-    public String getTxtPerfilUser() {
-        return txtPerfilUser.getSelectedItem().toString();
-    }
-
-    public void setTxtPerfilUser(String txtPerfilUser) { // Perfil user
-        this.txtPerfilUser.setSelectedItem(txtPerfilUser);
-    }
-
-    public String getTxtPesqCli() {
-        return txtPesqCli.getText();
-    }
-
-    public void setTxtPesqCli(String txtPesqCli) {
-        this.txtPesqCli.setText(txtPesqCli);
-    }
-
-    public String getTxtSenhaUser() {
-        String senha = new String(txtSenhaUser.getPassword());
-        return senha;
-    }
-
-    public void setTxtSenhaUser(String txtSenhaUser) {
-        this.txtSenhaUser.setText(txtSenhaUser);
-    }
-    // </editor-fold> 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluirCli;

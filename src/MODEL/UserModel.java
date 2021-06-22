@@ -2,11 +2,14 @@ package MODEL;
 
 import DAO.UsuarioDAO;
 import VIEW.UserView;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  * @author Carlos
  */
 public class UserModel {
+
     private int idUser;
     private String nome;
     private String perfil;
@@ -21,7 +24,7 @@ public class UserModel {
         this.login = login;
         this.senha = senha;
     }
-    
+
     //ADD
     public UserModel(String nome, String perfil, String login, String senha) {
         this.nome = nome;
@@ -33,7 +36,8 @@ public class UserModel {
     // Construtor;
     public UserModel() {
     }
-    
+
+
     public String getNome() {
         return nome;
     }
@@ -73,7 +77,5 @@ public class UserModel {
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
-    
-    
-    
+
 }

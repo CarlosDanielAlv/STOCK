@@ -48,7 +48,7 @@ public class UserBO {
     }
     
     // BUSCAR USUÁRIO
-    public boolean getUser(String name) throws SQLException {
+    public UserModel getUser(String name) throws SQLException {
         UsuarioDAO udao = new UsuarioDAO();
         
         return udao.getUser(name);
