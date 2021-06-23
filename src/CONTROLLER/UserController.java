@@ -39,7 +39,6 @@ public class UserController {
 
         try {
             // Adicionar novo usuário
-            System.out.println("IDuser = " + idUser);
             if (idUser == 0) {
                 ubo.addUser(new UserModel(nome, perfil, login, senha));
                 return true;

@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -66,7 +65,7 @@ public class UsuarioDAO {
             ps.setString(2, uM.getPerfil());
             ps.setString(3, uM.getLogin());
             ps.setString(4, uM.getSenha());
-            ps.setInt(5, Integer.parseInt(UserView.txtIdCli.getText()));
+            ps.setInt(5, Integer.parseInt(UserView.txtIdUser.getText()));
 
             ps.executeUpdate();
             System.out.println("Alterado Com Sucesso!!!");
@@ -120,7 +119,7 @@ public class UsuarioDAO {
                     TelaPrincipal.lbl_user.setForeground(azulPadrao);
                 }
                 // A linha abaixo chama a tela principal
-                //principal.lblIdUser.setText(rs.getString(1));
+                TelaPrincipal.idUser.setText(rs.getString(1));
                 TelaPrincipal.lbl_user.setText(rs.getString(2));
                 principal.setVisible(true);
                 return true;
@@ -146,7 +145,7 @@ public class UsuarioDAO {
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                UserView.txtIdCli.setText(rs.getString(1)); // ID
+                UserView.txtIdUser.setText(rs.getString(1)); // ID
                 uM.setNome(rs.getString(2)); // NOME
                 uM.setPerfil(rs.getString(3)); // PERFIL
                 uM.setLogin(rs.getString(4)); // LOGIN

@@ -51,7 +51,7 @@ public class UserView extends javax.swing.JInternalFrame {
         this.txtPerfilUser.setSelectedItem(null);
         this.txtRepSenhaUser.setText(null);
         this.txtSenhaUser.setText(null);
-        UserView.txtIdCli.setText(null);
+        UserView.txtIdUser.setText(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -61,7 +61,7 @@ public class UserView extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtIdCli = new javax.swing.JTextField();
+        txtIdUser = new javax.swing.JTextField();
         txtNomeUser = new javax.swing.JTextField();
         txtPerfilUser = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -70,13 +70,13 @@ public class UserView extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        btnExcluirCli = new javax.swing.JButton();
-        btnSalvarCli = new javax.swing.JButton();
+        btnExcluirUser = new javax.swing.JButton();
+        btnSalvarUser = new javax.swing.JButton();
         txtSenhaUser = new javax.swing.JPasswordField();
         txtRepSenhaUser = new javax.swing.JPasswordField();
         txtPesqCli = new javax.swing.JTextField();
         btnPesqCli = new javax.swing.JButton();
-        btnLimparCli = new javax.swing.JButton();
+        btnLimparUser = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -93,8 +93,8 @@ public class UserView extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Detalhes do usuário");
 
-        txtIdCli.setBackground(new java.awt.Color(255, 255, 204));
-        txtIdCli.setForeground(new java.awt.Color(255, 0, 102));
+        txtIdUser.setBackground(new java.awt.Color(255, 255, 204));
+        txtIdUser.setForeground(new java.awt.Color(255, 0, 102));
 
         txtPerfilUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "Admin", "Funcionario" }));
 
@@ -118,25 +118,25 @@ public class UserView extends javax.swing.JInternalFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Digite novamente sua senha");
 
-        btnExcluirCli.setBackground(new java.awt.Color(255, 102, 102));
-        btnExcluirCli.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnExcluirCli.setForeground(new java.awt.Color(255, 255, 255));
-        btnExcluirCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Icon/lixeira.png"))); // NOI18N
-        btnExcluirCli.setText("Excluir");
-        btnExcluirCli.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluirUser.setBackground(new java.awt.Color(255, 102, 102));
+        btnExcluirUser.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnExcluirUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluirUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Icon/lixeira.png"))); // NOI18N
+        btnExcluirUser.setText("Excluir");
+        btnExcluirUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirCliActionPerformed(evt);
+                btnExcluirUserActionPerformed(evt);
             }
         });
 
-        btnSalvarCli.setBackground(new java.awt.Color(0, 153, 153));
-        btnSalvarCli.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnSalvarCli.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalvarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Icon/bookmark.png"))); // NOI18N
-        btnSalvarCli.setText("Salvar");
-        btnSalvarCli.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvarUser.setBackground(new java.awt.Color(0, 153, 153));
+        btnSalvarUser.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnSalvarUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalvarUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Icon/bookmark.png"))); // NOI18N
+        btnSalvarUser.setText("Salvar");
+        btnSalvarUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarCliActionPerformed(evt);
+                btnSalvarUserActionPerformed(evt);
             }
         });
 
@@ -151,14 +151,14 @@ public class UserView extends javax.swing.JInternalFrame {
             }
         });
 
-        btnLimparCli.setBackground(new java.awt.Color(102, 204, 255));
-        btnLimparCli.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnLimparCli.setForeground(new java.awt.Color(255, 255, 255));
-        btnLimparCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Icon/borracha.png"))); // NOI18N
-        btnLimparCli.setText("Limpar");
-        btnLimparCli.addActionListener(new java.awt.event.ActionListener() {
+        btnLimparUser.setBackground(new java.awt.Color(102, 204, 255));
+        btnLimparUser.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnLimparUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimparUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Icon/borracha.png"))); // NOI18N
+        btnLimparUser.setText("Limpar");
+        btnLimparUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimparCliActionPerformed(evt);
+                btnLimparUserActionPerformed(evt);
             }
         });
 
@@ -174,7 +174,7 @@ public class UserView extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
                         .addGap(758, 758, 758)
-                        .addComponent(txtIdCli, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(869, 869, 869)
                         .addComponent(txtPesqCli, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,11 +208,11 @@ public class UserView extends javax.swing.JInternalFrame {
                         .addComponent(txtRepSenhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(101, 101, 101)
-                        .addComponent(btnSalvarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSalvarUser, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnLimparCli, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLimparUser, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnExcluirCli, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnExcluirUser, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
@@ -224,7 +224,7 @@ public class UserView extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(txtIdCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -251,9 +251,9 @@ public class UserView extends javax.swing.JInternalFrame {
                 .addComponent(txtRepSenhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimparCli, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluirCli, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnSalvarUser, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimparUser, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluirUser, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, 540));
@@ -262,7 +262,7 @@ public class UserView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // BOTÃO (SALVAR) - CLICK
-    private void btnSalvarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCliActionPerformed
+    private void btnSalvarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarUserActionPerformed
         // método salvar abaixo
         sair: // Em caso de erro de sistema venha sair.
         if (this.validaCampos()) { // Valida Campos Em Branco
@@ -272,7 +272,7 @@ public class UserView extends javax.swing.JInternalFrame {
         } else { // Salva o usuário
             try {
                 String senha = new String(this.txtSenhaUser.getPassword());
-                String idCli = UserView.txtIdCli.getText();
+                String idCli = UserView.txtIdUser.getText();
                 // Tratamento de inserção
                 if (idCli.equals("")) {
                     if (!uc.manterUsuario(0, this.txtNomeUser.getText(), this.txtPerfilUser.getSelectedItem().toString(), this.txtLoginUser.getText(), senha)) {
@@ -288,12 +288,10 @@ public class UserView extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso!!!", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
                 }
             } catch (Exception error) {
-                String idCli = UserView.txtIdCli.getText();
-                System.out.println(idCli);
                 System.out.println("Erro ao manter o cliente: " + error.getMessage());
             }
         }
-    }//GEN-LAST:event_btnSalvarCliActionPerformed
+    }//GEN-LAST:event_btnSalvarUserActionPerformed
 
     // BOTÃO (PESQUISAR) - CLICK
     private void btnPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqCliActionPerformed
@@ -316,26 +314,27 @@ public class UserView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnPesqCliActionPerformed
 
     // BOTÃO (LIMPAR) - CLICK
-    private void btnLimparCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCliActionPerformed
+    private void btnLimparUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparUserActionPerformed
         // O código abaixo limpa todos os campos
         int limpar = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja limpar os dados? ", "Atenção", JOptionPane.YES_NO_OPTION);
         if (limpar == JOptionPane.YES_OPTION)
             this.limpaCampos();
-    }//GEN-LAST:event_btnLimparCliActionPerformed
+    }//GEN-LAST:event_btnLimparUserActionPerformed
 
     // BOTÃO (EXCLUIR) - CLICK
-    private void btnExcluirCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCliActionPerformed
+    private void btnExcluirUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirUserActionPerformed
         // Validação de campos
         if (this.validaPesquisa()) {
             JOptionPane.showMessageDialog(null, "Preencha o campo pesquisa para realizar uma busca.", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
-        } else if (UserView.txtIdCli.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Necessário realizar uma pesquisa, de um usuário válido", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
+        } else if (UserView.txtIdUser.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Necessário realizar uma pesquisa de um usuário válido", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
         } else {
             // código abaixo realiza a exclusão de um usuário
             try {
                 int excluir = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o usuário? não será possível recuperar o mesmo. ", "Atenção", JOptionPane.YES_NO_OPTION);
                 if (excluir == JOptionPane.YES_OPTION) {
-                    if (uc.DeleteUser(Integer.parseInt(UserView.txtIdCli.getText()))) {
+                    if (uc.DeleteUser(Integer.parseInt(UserView.txtIdUser.getText()))) {
+                        this.limpaCampos();
                         JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!!!", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
@@ -344,7 +343,7 @@ public class UserView extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Houve um problema na exclusão, entre em contato com desenvolvedor.", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-    }//GEN-LAST:event_btnExcluirCliActionPerformed
+    }//GEN-LAST:event_btnExcluirUserActionPerformed
 
     public void setTxtNomeUser(JTextField txtNomeUser) {
         this.txtNomeUser = txtNomeUser;
@@ -356,10 +355,10 @@ public class UserView extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnExcluirCli;
-    private javax.swing.JButton btnLimparCli;
+    private javax.swing.JButton btnExcluirUser;
+    private javax.swing.JButton btnLimparUser;
     private javax.swing.JButton btnPesqCli;
-    private javax.swing.JButton btnSalvarCli;
+    private javax.swing.JButton btnSalvarUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -368,7 +367,7 @@ public class UserView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    public static javax.swing.JTextField txtIdCli;
+    public static javax.swing.JTextField txtIdUser;
     private javax.swing.JTextField txtLoginUser;
     private javax.swing.JTextField txtNomeUser;
     private javax.swing.JComboBox<String> txtPerfilUser;

@@ -35,6 +35,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lbl_data = new javax.swing.JLabel();
         lbl_user = new javax.swing.JLabel();
+        idUser = new javax.swing.JLabel();
         img_fundo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
@@ -51,6 +52,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenOpcSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("STOCK");
         setName("TelaPrincipal"); // NOI18N
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -93,6 +95,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbl_user.setToolTipText("");
         getContentPane().add(lbl_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 170, 30));
 
+        idUser.setForeground(new java.awt.Color(255, 255, 51));
+        idUser.setText("ID");
+        getContentPane().add(idUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
+
         img_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/TOCK.jpg"))); // NOI18N
         getContentPane().add(img_fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 221));
 
@@ -110,6 +116,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         MenCadCli.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
         MenCadCli.setText("Cliente");
+        MenCadCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenCadCliActionPerformed(evt);
+            }
+        });
         menuCadastro.add(MenCadCli);
 
         MenCadEntrada.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_DOWN_MASK));
@@ -181,13 +192,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Date date = new Date();
         DateFormat formatDate = DateFormat.getDateInstance(DateFormat.SHORT); // formata a data (SHORT) mostrar somente a data
         lbl_data.setText(formatDate.format(date));
+        TelaPrincipal.idUser.setVisible(false);
     }//GEN-LAST:event_formWindowActivated
 
     // BOTÃO SAIR
     private void MenOpcSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenOpcSairActionPerformed
         int sair = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair? ","Atenção", JOptionPane.YES_NO_OPTION);
-        if(sair == JOptionPane.YES_OPTION)
-            System.exit(0);
+        if(sair == JOptionPane.YES_OPTION){
+            this.dispose();
+            Login login = new Login();
+            login.setVisible(true);
+        }
+            
+        
     }//GEN-LAST:event_MenOpcSairActionPerformed
 
     // BOTÃO SOBRE
@@ -201,10 +218,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void menCadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menCadUserActionPerformed
         // abre form usuário na tela principal
         UserView userView = new UserView();
-        UserView.txtIdCli.setVisible(false); // Oculta o txtid cli
+        UserView.txtIdUser.setVisible(false); // Oculta o txtid cli
         userView.setVisible(true); // torna visível o form user
         Desktop_Principal.add(userView); // adiciona o form dentro da tela principal
     }//GEN-LAST:event_menCadUserActionPerformed
+
+    // BOTÃO CADASTRAR CLIENTE
+    private void MenCadCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadCliActionPerformed
+        // abre form usuário na tela principal
+        ClientView clientView = new ClientView();
+        clientView.setVisible(true);
+        Desktop_Principal.add(clientView);
+    }//GEN-LAST:event_MenCadCliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,6 +275,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenOpcSair;
     private javax.swing.JMenuItem MenRelEntrada;
     private javax.swing.JMenuItem MenRelSaida;
+    public static javax.swing.JLabel idUser;
     private javax.swing.JLabel img_fundo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
