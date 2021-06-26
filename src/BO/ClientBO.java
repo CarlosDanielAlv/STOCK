@@ -36,5 +36,12 @@ public class ClientBO {
         return cdao.DeleteCli(idCli);
     }
     
+    // VERIFICAR SE CLIENTE JÁ EXISTE NA BASE DE DADOS
+    public boolean verCli(String name) {
+        ClientDAO cdao = new ClientDAO();
+        
+        return cdao.verCli(name);
+    }
+    
     
 }

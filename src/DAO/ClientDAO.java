@@ -2,16 +2,13 @@ package DAO;
 
 import MODEL.ClientModel;
 import MODEL.EnderecoModel;
-import MODEL.UserModel;
 import VIEW.ClientView;
-import VIEW.UserView;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -90,6 +87,26 @@ public class ClientDAO {
         }
     }
 
+    // VERIFICAR SE CLIENTE JÁ EXISTE NA BASE DE DADOS
+    public boolean verCli(String name) {
+        String sql = "SELECT NOMECLI FROM TBCLIENTE WHERE TELCLI LIKE ?";
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, name + "%");
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println("Houve um erro na validação do cliente: " + e.getMessage());
+            return false;
+        }
+    }
+
     // BUSCAR USUÁRIO
     public ClientModel getCli(String name) throws SQLException {
         String sql = "SELECT "
@@ -120,7 +137,6 @@ public class ClientDAO {
                 em.setCidade(rs.getString(10));                     // CIDADE
                 em.setComplemento(rs.getString(11));                // COMPLEMENTO
                 cm.setEndereco(em);                                 // ENDEREÇO.
-                JOptionPane.showMessageDialog(null, "Busca realizada com sucesso!!!");
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário Não Encontrado....");
             }

@@ -11,6 +11,18 @@ import javax.swing.JOptionPane;
  */
 public class ClientController {
 
+    // VERIFICAR SE CLIENTE JÁ EXISTE NA BASE DE DADOS
+    public boolean verCli(String name) {
+        ClientBO cbo = new ClientBO();
+
+        if (cbo.verCli(name)) {
+            System.out.println("Cliente já existe");
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     // ADICIONAR CLIENTE
     public boolean addCli(int cliente_id, String nomeCli, String telCli, String emailCli) throws SQLException {
         ClientBO cbo = new ClientBO();

@@ -60,7 +60,7 @@ public class UsuarioDAO {
         String SQL = "UPDATE TBUSUARIO SET NOME=?, PERFIL=?, LOGIN=?, SENHA=? WHERE USUARIO_ID=?";
         try {
             ps = connection.prepareStatement(SQL);
-            
+
             ps.setString(1, uM.getNome());
             ps.setString(2, uM.getPerfil());
             ps.setString(3, uM.getLogin());
@@ -150,7 +150,6 @@ public class UsuarioDAO {
                 uM.setPerfil(rs.getString(3)); // PERFIL
                 uM.setLogin(rs.getString(4)); // LOGIN
                 uM.setSenha(rs.getString(5)); // SENHA
-                JOptionPane.showMessageDialog(null, "Busca realizada com sucesso!!!");
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário Não Encontrado....");
             }
@@ -160,5 +159,25 @@ public class UsuarioDAO {
             connection.close();
         }
         return uM;
+    }
+
+    // VERIFICAR SE USUÁRIO JÁ EXISTE NA BASE DE DADOS
+    public boolean verUser(String name) {
+        String sql = "SELECT * FROM TBUSUARIO WHERE LOGIN LIKE ?";
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, name + "%");
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println("Houve um erro na validação do cliente: " + e.getMessage());
+            return false;
+        }
     }
 }

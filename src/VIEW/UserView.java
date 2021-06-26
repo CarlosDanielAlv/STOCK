@@ -275,11 +275,15 @@ public class UserView extends javax.swing.JInternalFrame {
                 String idCli = UserView.txtIdUser.getText();
                 // Tratamento de inserção
                 if (idCli.equals("")) {
-                    if (!uc.manterUsuario(0, this.txtNomeUser.getText(), this.txtPerfilUser.getSelectedItem().toString(), this.txtLoginUser.getText(), senha)) {
-                        JOptionPane.showMessageDialog(null, "Erro ao inserir um usuário no banco de dados, contate o suporte técnico", "MENSAGEM", JOptionPane.ERROR_MESSAGE);
-                        break sair; // Ir para o sair
+                    if (uc.verUser(this.txtLoginUser.getText())) {// Verificar se o usuário já existe
+                        JOptionPane.showMessageDialog(null, "Já existe um usuário com este login, por favor tente novamente!!!");
+                    } else {
+                        if (!uc.manterUsuario(0, this.txtNomeUser.getText(), this.txtPerfilUser.getSelectedItem().toString(), this.txtLoginUser.getText(), senha)) {
+                            JOptionPane.showMessageDialog(null, "Erro ao inserir um usuário no banco de dados, contate o suporte técnico", "MENSAGEM", JOptionPane.ERROR_MESSAGE);
+                            break sair; // Ir para o sair
+                        }
+                        JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!!!", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
                     }
-                    JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!!!", "MENSAGEM", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     if (!uc.manterUsuario(Integer.parseInt(idCli), this.txtNomeUser.getText(), this.txtPerfilUser.getSelectedItem().toString(), this.txtLoginUser.getText(), senha)) {
                         JOptionPane.showMessageDialog(null, "Erro ao alterar um usuário no banco de dados, contate o suporte técnico", "MENSAGEM", JOptionPane.ERROR_MESSAGE);
@@ -305,6 +309,7 @@ public class UserView extends javax.swing.JInternalFrame {
                 this.txtLoginUser.setText(um.getLogin());           // LOGIN
                 this.txtPerfilUser.setSelectedItem(um.getPerfil()); // PERFIL
                 this.txtSenhaUser.setText(um.getSenha());           // SENHA
+                JOptionPane.showMessageDialog(null, "Busca realizada com sucesso!!!");
             } catch (Exception e) {
                 System.out.println("erro ao fazer a busca: " + e.getMessage());
             }

@@ -53,5 +53,12 @@ public class UserBO {
         
         return udao.getUser(name);
     }
+    
+    // VERIFICAR SE USUÁRIO JÁ EXISTE NA BASE DE DADOS
+    public boolean verUser(String name) {
+        UsuarioDAO udao = new UsuarioDAO();
+        
+        return udao.verUser(name);
+    }
 
 }

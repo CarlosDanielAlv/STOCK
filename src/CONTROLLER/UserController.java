@@ -76,4 +76,14 @@ public class UserController {
         }
     }
 
+    // VERIFICAR SE USUÁRIO JÁ EXISTE NA BASE DE DADOS
+    public boolean verUser(String name) {
+
+        if (ubo.verUser(name)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
